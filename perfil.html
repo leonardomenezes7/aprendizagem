@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body>
+      <nav>
+        <a href="usuario.html">Início</a>
+        <a href="index.html">Quiz</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Perfil do Usuário</h1>
+        </header>
+
+        <section id="perfil">
+            <h2>Informações Pessoais</h2>
+            <p><strong>Nome:</strong> <span id="nome-usuario"></span></p>
+            <p><strong>E-mail:</strong> <span id="email-usuario"></span></p>
+
+            <h2>Respostas do Quiz</h2>
+            <ul id="respostas-quiz"></ul>
+        </section>
+    </main>
+
+    <script>
+        // Carrega informações do Local Storage
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        const respostas = JSON.parse(localStorage.getItem('respostasQuiz'));
+
+        // Exibe informações pessoais
+        document.getElementById('nome-usuario').textContent = usuario ? usuario.nome : "Não encontrado";
+        document.getElementById('email-usuario').textContent = usuario ? usuario.email : "Não encontrado";
+
+        // Exibe respostas do quiz
+        const respostasList = document.getElementById('respostas-quiz');
+        if (respostas && respostas.length > 0) {
+            respostas.forEach((resposta, index) => {
+                const li = document.createElement('li');
+                li.textContent = `Pergunta ${index + 1}: ${resposta.texto}`;
+                respostasList.appendChild(li);
+            });
+        } else {
+            respostasList.innerHTML = "<li>Nenhuma resposta encontrada.</li>";
+        }
+    </script>
+</body>
+
+</html>

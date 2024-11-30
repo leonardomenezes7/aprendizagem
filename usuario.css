@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+*,
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #0F172A; /* Fundo escuro */
+  color: #f1f5f9; /* Texto branco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Altura mínima para dispositivos menores */
+  padding: 16px; /* Espaçamento interno para evitar bordas coladas */
+}
+
+main {
+  width: 100%;
+  max-width: 400px;
+  background-color: #1e293b;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #A3E635; /* Verde claro */
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaçamento entre inputs e botão */
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9; /* Texto branco */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid #475569;
+  border-radius: 8px;
+  background-color: #243447;
+  color: #f1f5f9;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #94a3b8; /* Placeholder em cinza claro */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #A3E635; /* Borda verde no foco */
+  background-color: #1e293b; /* Fundo escuro no foco */
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.4); /* Brilho verde suave no foco */
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #0F172A; /* Texto escuro */
+  background-color: #A3E635; /* Fundo verde */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+button:hover {
+  background-color: #8abd32; /* Verde mais claro no hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra maior no hover */
+}
+
+button:active {
+  background-color: #6b9a2b; /* Verde mais escuro ao clicar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    padding: 24px; /* Reduz o padding em telas menores */
+    border-radius: 10px;
+  }
+
+  header h1 {
+    font-size: 20px; /* Reduz o tamanho do título */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button {
+    padding: 12px; /* Inputs e botão um pouco menores */
+    font-size: 14px; /* Texto menor */
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 16px; /* Ajusta ainda mais o padding */
+    border-radius: 8px;
+  }
+
+  header h1 {
+    font-size: 18px; /* Título menor em telas muito pequenas */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button {
+    padding: 10px; /* Inputs e botão mais compactos */
+    font-size: 14px; /* Texto menor */
+  }
+
+  label {
+    font-size: 12px; /* Texto menor nas labels */
+  }
+}
