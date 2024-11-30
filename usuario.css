@@ -7,150 +7,189 @@
   box-sizing: border-box;
 
   font-family: 'Inter', sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
+/* Fundo com Degradê Animado */
 body {
-  background-color: #0F172A; /* Fundo escuro */
+  background: linear-gradient(-45deg, #A3E635, #243447, #0F172A, #A3E635);
+  background-size: 200% 200%; /* Ajusta o tamanho do gradiente */
+  animation: gradient-animation 8s ease infinite; /* Ciclo mais curto para movimento mais rápido */
   color: #f1f5f9; /* Texto branco */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh; /* Altura mínima para dispositivos menores */
-  padding: 16px; /* Espaçamento interno para evitar bordas coladas */
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px; /* Espaço para o menu fixo */
 }
 
-main {
+/* Animação do Degradê */
+@keyframes gradient-animation {
+  0% {
+    background-position: 50% 0%; /* Foco no topo-central */
+  }
+  25% {
+    background-position: 50% 50%; /* Movimento para o centro */
+  }
+  50% {
+    background-position: 50% 100%; /* Foco no meio-inferior */
+  }
+  75% {
+    background-position: 50% 50%; /* Volta ao centro */
+  }
+  100% {
+    background-position: 50% 0%; /* Retorna ao topo-central */
+  }
+}
+
+/* Menu de Navegação */
+nav {
   width: 100%;
-  max-width: 400px;
-  background-color: #1e293b;
+  background-color: #A3E635;
+  padding: 12px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0F172A;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #0F172A;
+  color: #A3E635;
+}
+
+/* Conteúdo Principal */
+main {
+  max-width: 600px;
+  margin: 0 auto;
   padding: 32px;
+  background-color: rgba(30, 41, 59, 0.95); /* Fundo semitransparente */
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-header {
-  margin-bottom: 24px;
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #A3E635;
   text-align: center;
+  margin-bottom: 12px;
 }
 
-header h1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #A3E635; /* Verde claro */
+header p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
 /* Formulário */
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espaçamento entre inputs e botão */
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
   font-size: 14px;
   font-weight: 600;
-  color: #f1f5f9; /* Texto branco */
+  margin-bottom: 8px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  border: 2px solid #475569;
+input,
+select {
+  padding: 12px;
+  border: 1px solid #475569;
   border-radius: 8px;
   background-color: #243447;
   color: #f1f5f9;
-  outline: none;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra interna */
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder {
+input::placeholder {
   color: #94a3b8; /* Placeholder em cinza claro */
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #A3E635; /* Borda verde no foco */
-  background-color: #1e293b; /* Fundo escuro no foco */
-  box-shadow: 0 0 8px rgba(163, 230, 53, 0.4); /* Brilho verde suave no foco */
+input:focus,
+select:focus {
+  border-color: #A3E635; /* Verde claro no foco */
+  outline: none;
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.4); /* Sombra no foco */
 }
 
 /* Botão */
 button {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  color: #0F172A; /* Texto escuro */
-  background-color: #A3E635; /* Fundo verde */
+  padding: 12px;
+  background-color: #A3E635;
+  color: #0F172A;
   border: none;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  background-color: #8abd32; /* Verde mais claro no hover */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra maior no hover */
+  background-color: #8abd32;
 }
 
 button:active {
-  background-color: #6b9a2b; /* Verde mais escuro ao clicar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #6b9a2b;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
+  body {
+    background-size: 300% 300%; /* Gradiente maior no mobile */
+    animation-duration: 12s; /* Movimento mais suave e destacado */
+  }
+
   main {
-    padding: 24px; /* Reduz o padding em telas menores */
-    border-radius: 10px;
+    background-color: transparent; /* Remove o fundo do formulário */
+    padding: 16px; /* Ajusta o espaçamento para telas menores */
+    box-shadow: none; /* Remove a sombra */
   }
 
   header h1 {
-    font-size: 20px; /* Reduz o tamanho do título */
+    font-size: 24px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
+  header p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  form {
+    gap: 12px; /* Reduz o espaçamento entre os campos */
+  }
+
+  input,
+  select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
   button {
-    padding: 12px; /* Inputs e botão um pouco menores */
-    font-size: 14px; /* Texto menor */
-  }
-}
-
-@media (max-width: 480px) {
-  main {
-    padding: 16px; /* Ajusta ainda mais o padding */
-    border-radius: 8px;
-  }
-
-  header h1 {
-    font-size: 18px; /* Título menor em telas muito pequenas */
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  button {
-    padding: 10px; /* Inputs e botão mais compactos */
-    font-size: 14px; /* Texto menor */
-  }
-
-  label {
-    font-size: 12px; /* Texto menor nas labels */
+    font-size: 14px;
+    padding: 10px;
   }
 }

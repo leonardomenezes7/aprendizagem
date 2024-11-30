@@ -12,11 +12,12 @@
     <main>
         <header>
             <h1>Crie sua Conta</h1>
+            <p>Preencha as informações abaixo para começar a usar o sistema.</p>
         </header>
 
         <form id="form-usuario">
             <div class="form-group">
-                <label for="nome">Nome:</label>
+                <label for="nome">Nome Completo:</label>
                 <input type="text" id="nome" placeholder="Digite seu nome" required>
             </div>
             <div class="form-group">
@@ -24,8 +25,26 @@
                 <input type="email" id="email" placeholder="Digite seu e-mail" required>
             </div>
             <div class="form-group">
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" placeholder="Digite sua idade" required>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso de Interesse:</label>
+                <input type="text" id="curso" placeholder="Digite o curso desejado">
+            </div>
+            <div class="form-group">
+                <label for="formacao">Formação Acadêmica:</label>
+                <select id="formacao" required>
+                    <option value="" disabled selected>Selecione sua formação</option>
+                    <option value="ensino-medio">Ensino Médio</option>
+                    <option value="graduacao">Graduação</option>
+                    <option value="pos-graduacao">Pós-Graduação</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="senha">Senha:</label>
-                <input type="password" id="senha" placeholder="Digite sua senha" required>
+                <input type="password" id="senha" placeholder="Crie uma senha" required>
             </div>
             <button type="submit">Criar Conta</button>
         </form>
@@ -39,9 +58,12 @@
 
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
+            const idade = document.getElementById('idade').value;
+            const curso = document.getElementById('curso').value;
+            const formacao = document.getElementById('formacao').value;
 
             // Armazena os dados no Local Storage
-            localStorage.setItem('usuario', JSON.stringify({ nome, email }));
+            localStorage.setItem('usuario', JSON.stringify({ nome, email, idade, curso, formacao }));
 
             // Redireciona para a página Home
             window.location.href = 'home.html';
