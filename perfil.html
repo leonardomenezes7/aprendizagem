@@ -10,48 +10,55 @@
 
 <body>
   <nav>
-    <a href="usuario.html">Início</a>
+    <a href="home.html">Home</a>
     <a href="index.html">Quiz</a>
     <a href="perfil.html">Perfil</a>
     <a href="aulas.html">Aulas</a>
 </nav>
 
-    <main>
-        <header>
-            <h1>Perfil do Usuário</h1>
-        </header>
+<main>
+  <header>
+      <h1>Perfil do Usuário</h1>
+  </header>
 
-        <section id="perfil">
-            <h2>Informações Pessoais</h2>
-            <p><strong>Nome:</strong> <span id="nome-usuario"></span></p>
-            <p><strong>E-mail:</strong> <span id="email-usuario"></span></p>
+  <section id="perfil">
+      <h2>Informações Pessoais</h2>
+      <p><strong>Nome:</strong> <span id="nome-usuario"></span></p>
+      <p><strong>E-mail:</strong> <span id="email-usuario"></span></p>
 
-            <h2>Respostas do Quiz</h2>
-            <ul id="respostas-quiz"></ul>
-        </section>
-    </main>
+      <h2>Recomendações com Base nas Suas Respostas</h2>
+      <ul id="respostas-quiz"></ul>
+  </section>
+</main>
 
-    <script>
-        // Carrega informações do Local Storage
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        const respostas = JSON.parse(localStorage.getItem('respostasQuiz'));
+<footer>
+  <p>© 2024 Sistema de Aprendizado. Todos os direitos reservados.</p>
+</footer>
 
-        // Exibe informações pessoais
-        document.getElementById('nome-usuario').textContent = usuario ? usuario.nome : "Não encontrado";
-        document.getElementById('email-usuario').textContent = usuario ? usuario.email : "Não encontrado";
+<script>
+  // Recupera informações do Local Storage
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  const respostas = JSON.parse(localStorage.getItem('respostasQuiz'));
 
-        // Exibe respostas do quiz
-        const respostasList = document.getElementById('respostas-quiz');
-        if (respostas && respostas.length > 0) {
-            respostas.forEach((resposta, index) => {
-                const li = document.createElement('li');
-                li.textContent = `Pergunta ${index + 1}: ${resposta.texto}`;
-                respostasList.appendChild(li);
-            });
-        } else {
-            respostasList.innerHTML = "<li>Nenhuma resposta encontrada.</li>";
-        }
-    </script>
+  // Exibe informações pessoais
+  document.getElementById('nome-usuario').textContent = usuario ? usuario.nome : "Não encontrado";
+  document.getElementById('email-usuario').textContent = usuario ? usuario.email : "Não encontrado";
+
+  // Exibe respostas e recomendações
+  const respostasList = document.getElementById('respostas-quiz');
+  if (respostas && respostas.length > 0) {
+      respostas.forEach((resposta, index) => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+              <strong>Pergunta ${index + 1}:</strong> ${resposta.texto}
+              <p><strong>Recomendação:</strong> ${resposta.recomendacao}</p>
+          `;
+          respostasList.appendChild(li);
+      });
+  } else {
+      respostasList.innerHTML = "<li>Nenhuma resposta encontrada.</li>";
+  }
+</script>
 </body>
 
 </html>

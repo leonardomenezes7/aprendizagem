@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
+    <title>Criar Conta</title>
     <link rel="stylesheet" href="usuario.css">
 </head>
 
@@ -40,11 +40,11 @@
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
 
-            // Armazena os dados do usuário no localStorage
+            // Armazena os dados no Local Storage
             localStorage.setItem('usuario', JSON.stringify({ nome, email }));
 
-            // Redireciona para o quiz
-            window.location.href = './index.html';
+            // Redireciona para a página Home
+            window.location.href = 'home.html';
         });
     </script>
 </body>
